@@ -129,9 +129,6 @@ app.post("/air_rider/update/:number", (req, res) => {
 });
 
 
-
-
-
 let sushi = [
   { id:0, code:"A01", name:"大切りマグロ", category :"握り", type : "マグロ", cost:140, kcal:96 },
   { id:1, code:"A02", name:"マグロステーキ", category :"握り", type : "マグロ", cost:160, kcal:110 },
@@ -243,9 +240,6 @@ app.post("/sushi/update/:number", (req, res) => {
 });
 
 
-
-
-
 let game = [
   { id:0, code:"01", name:"【サバイバルローグライクアクション】剣と魔法と剣と剣", category :"アクション", author : "ZOMBI 314", url:"https://unityroom.com/games/swmgswsw", },
   { id:1, code:"02", name:"【将棋ライク 〜将棋×ローグライク〜", category :"将棋・ローグライク", author : "こもめ、ぺんぎー", url:"https://unityroom.com/games/shougi-like", },
@@ -307,7 +301,7 @@ app.post("/game/delete/:number", (req, res) => {
   if (!game[number]) {
     return res.status(404).send("データが存在しません");
   }
-
+  
   game.splice(number, 1);
   res.redirect("/game");
 });
@@ -348,9 +342,6 @@ app.post("/game/update/:number", (req, res) => {
   console.log( game );
   res.redirect('/game' );
 });
-
-
-
 
 
 app.listen(8080, () => {
