@@ -81,7 +81,7 @@ app.post("/air_rider/delete/:number", (req, res) => {
 // Create
 app.post("/air_rider", (req, res) => {
   // 本来ならここにDBとのやり取りが入る
-  const id = rider.length + 1;
+  const id = rider.length ;
   const name = req.body.name;
   const speed = req.body.speed;
   const acceleration = req.body.acceleration;
@@ -201,7 +201,7 @@ app.post("/sushi/delete/:number", (req, res) => {
 // Create
 app.post("/sushi", (req, res) => {
   // 本来ならここにDBとのやり取りが入る
-  const id = sushi.length + 1;
+  const id = sushi.length ;
   const code = req.body.code;
   const name = req.body.name;
   const category = req.body.category;
@@ -309,7 +309,7 @@ app.post("/game/delete/:number", (req, res) => {
 // Create
 app.post("/game", (req, res) => {
   // 本来ならここにDBとのやり取りが入る
-  const id = game.length + 1;
+  const id = game.length ;
   const code = req.body.code;
   const name = req.body.name;
   const category = req.body.category;
