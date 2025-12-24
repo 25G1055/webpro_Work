@@ -1,0 +1,29 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= data.name %></title>
+</head>
+<body>
+  <h2><%= data.name %>の編集</h2>
+  <form action="/air_rider/update/<%= data.id  %>" method="POST">
+    <table>
+      <tr><th>項目</th><th>データ</th></tr>
+      <tr><td>マシン名</td><td><input type="text" name="name" value="<%= data.name %>"></td></tr>
+      <tr><td>最高速</td><td><input type="text" name="speed" value="<%= data.speed %>"></td></tr>
+      <tr><td>加速</td><td><input type="text" name="acceleration" value="<%= data.acceleration %>"></td></tr>
+      <tr><td>チャージ</td><td><input type="text" name="charge" value="<%= data.charge %>"></td></tr>
+      <tr><td>旋回</td><td><input type="text" name="turning" value="<%= data.turning %>"></td></tr>
+      <tr><td>グリップ</td><td><input type="text" name="grip" value="<%= data.grip %>"></td></tr>    
+      <tr><td>揚力</td><td><input type="text" name="lift" value="<%= data.lift %>"></td></tr>
+      <tr><td>飛高速</td><td><input type="text" name="air_speed" value="<%= data.air_speed %>"></td></tr>
+      <tr><td>攻撃力</td><td><input type="text" name="attack" value="<%= data.attack %>"></td></tr>
+      <tr><td>耐久力</td><td><input type="text" name="defense" value="<%= data.defense %>"></td></tr>
+      <tr><td>重量</td><td><input type="text" name="heavy" value="<%= data.heavy %>"></td></tr>
+      <tr><td>画像ファイル名</td><td><input type="text" name="photo" value="<%= data.photo %>"></td></tr>
+    </table>
+    <input type="submit" values="登録">
+  </form>
+  <a href="/air_rider/">マシン一覧に戻る</a>
+</body>
+</html>

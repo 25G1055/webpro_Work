@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>削除確認</title>
+</head>
+<body>
+  <h2>削除確認</h2>
+
+  <p>以下のメニューを削除してもよろしいですか？</p>
+
+  <ul>
+    <li>コード：<%= data.code %></li>
+    <li>商品名：<%= data.name %></li>
+  </ul>
+
+  <form action="/sushi/delete/<%= id %>" method="POST">
+    <button type="submit">削除する</button>
+  </form>
+
+  <a href="/sushi">キャンセル</a>
+</body>
+</html>

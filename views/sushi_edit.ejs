@@ -1,0 +1,23 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= data.name %></title>
+</head>
+<body>
+  <h2><%= data.name %>の編集</h2>
+  <form action="/sushi/update/<%= data.id %>" method="POST">
+    <table>
+      <tr><th>項目</th><th>データ</th></tr>
+      <tr><td>コード</td><td><input type="text" name="code" value="<%= data.code %>"></td></tr>
+      <tr><td>商品名</td><td><input type="text" name="name" value="<%= data.name %>"></td></tr>
+      <tr><td>カテゴリー</td><td><input type="text" name="category" value="<%= data.category %>"></td></tr>
+      <tr><td>タイプ</td><td><input type="text" name="type" value="<%= data.type %>"></td></tr>
+      <tr><td>価格</td><td><input type="text" name="cost" value="<%= data.cost %>"></td></tr>
+      <tr><td>カロリー</td><td><input type="text" name="kcal" value="<%= data.kcal %>"></td></tr>
+    </table>
+    <input type="submit" values="登録">
+  </form>
+  <a href="/sushi/">寿司一覧に戻る</a>
+</body>
+</html>

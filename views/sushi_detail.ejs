@@ -1,0 +1,23 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= data.name %></title>
+</head>
+<body>
+  <h2><%= data.name %>の詳細</h2>
+  <table>
+    <tr><th>項目</th><th>データ</th></tr>
+    <tr><th>ID</th><td><%= id  %></td></tr>
+    <tr><th>コード</th><td><%= data.code %></td></tr>
+    <tr><th>商品名</th><td><%= data.name %></td></tr>
+    <tr><th>カテゴリー</th><td><%= data.category %></td></tr>
+    <tr><th>タイプ</th><td><%= data.type %></td></tr>
+    <tr><th>価格</th><td><%= data.cost %></td></tr>
+    <tr><th>カロリー</th><td><%= data.kcal %></td></tr>
+  </table>
+  <a href="/sushi/edit/<%= id %>">編集</a>
+  <a href="/sushi/delete/<%= id %>">削除</a>
+  <a href="/sushi">寿司一覧に戻る</a>
+</body>
+</html>
