@@ -35,7 +35,6 @@ let rider = [
 
 // 一覧
 app.get("/air_rider", (req, res) => {
-  // 本来ならここにDBとのやり取りが入る
   res.render('air_rider', {data: rider} );
 });
 
@@ -46,7 +45,6 @@ app.get("/air_rider/create", (req, res) => {
 
 // 詳細
 app.get("/air_rider/:number", (req, res) => {
-  // 本来ならここにDBとのやり取りが入る
   const number = req.params.number;
   const detail = rider[ number ];
   res.render('air_rider_detail', {id: number, data: detail} );
@@ -74,13 +72,12 @@ app.post("/air_rider/delete/:number", (req, res) => {
   }
 
   rider.splice(number, 1);
-  res.redirect("/air_rider");
-});
+  res.render('air_rider_message', { message: "マシンを削除しました", link: "/air_rider" , linktext: "マシン一覧に戻る" });
+  });
 
 
 // Create
 app.post("/air_rider", (req, res) => {
-  // 本来ならここにDBとのやり取りが入る
   const id = rider.length ;
   const name = req.body.name;
   const speed = req.body.speed;
@@ -97,12 +94,11 @@ app.post("/air_rider", (req, res) => {
   rider.push( { id:id, name:name, speed:speed, acceleration:acceleration, charge:charge, turning:turning, grip:grip, lift:lift, air_speed:air_speed, attack:attack, defense:defense, heavy:heavy ,photo:photo} );
   console.log( rider );
 
-  res.render('air_rider', {data: rider} );
-});
+  res.render('air_rider_message', { message: "新しいマシンを追加しました。", link: "/air_rider", linktext: "マシン一覧に戻る" });
+  });
 
 // 編集ページ
 app.get("/air_rider/edit/:number", (req, res) => {
-  // 本来ならここにDBとのやり取りが入る
   const number = req.params.number;
   const detail = rider[ number ];
   res.render('air_rider_edit', {id: number, data: detail} );
@@ -110,8 +106,6 @@ app.get("/air_rider/edit/:number", (req, res) => {
 
 // Update
 app.post("/air_rider/update/:number", (req, res) => {
-  // 本来は変更する番号が存在するか，各項目が正しいか厳重にチェックする
-  // 本来ならここにDBとのやり取りが入る
   rider[req.params.number].name = req.body.name;
   rider[req.params.number].speed = req.body.speed;
   rider[req.params.number].acceleration = req.body.acceleration;
@@ -125,8 +119,12 @@ app.post("/air_rider/update/:number", (req, res) => {
   rider[req.params.number].heavy = req.body.heavy;
   rider[req.params.number].photo = req.body.photo;
   console.log( rider );
-  res.redirect('/air_rider' );
-});
+
+  res.render('air_rider_message', { message: "マシンの情報を変更しました。", link: "/air_rider/" + req.params.number , linktext: "変更したマシンの詳細ページへ戻る" });   
+   });
+
+
+
 
 
 let sushi = [
@@ -157,7 +155,6 @@ let sushi = [
 
 // 一覧
 app.get("/sushi", (req, res) => {
-  // 本来ならここにDBとのやり取りが入る
   res.render('sushi', {data: sushi} );
 });
 
@@ -168,7 +165,6 @@ app.get("/sushi/create", (req, res) => {
 
 // 詳細
 app.get("/sushi/:number", (req, res) => {
-  // 本来ならここにDBとのやり取りが入る
   const number = req.params.number;
   const detail = sushi[ number ];
   res.render('sushi_detail', {id: number, data: detail} );
@@ -195,12 +191,11 @@ app.post("/sushi/delete/:number", (req, res) => {
   }
 
   sushi.splice(number, 1);
-  res.redirect("/sushi");
+ res.render('sushi_message', { message: "寿司情報を削除しました。", link: "/sushi", linktext: "寿司一覧に戻る" });
 });
 
 // Create
 app.post("/sushi", (req, res) => {
-  // 本来ならここにDBとのやり取りが入る
   const id = sushi.length ;
   const code = req.body.code;
   const name = req.body.name;
@@ -213,12 +208,11 @@ app.post("/sushi", (req, res) => {
   sushi.push( { id: id, code: code, name: name, category: category, type: type, cost: cost, kcal: kcal } );
   console.log( sushi );
  
-  res.render('sushi', {data: sushi} );
+res.render('sushi_message', { message: "新しい寿司を追加しました。", link: "/sushi", linktext: "寿司一覧に戻る" });
 });
 
 // 編集ページ
 app.get("/sushi/edit/:number", (req, res) => {
-  // 本来ならここにDBとのやり取りが入る
   const number = req.params.number;
   const detail = sushi[ number ];
   res.render('sushi_edit', {id: number, data: detail} );
@@ -226,8 +220,6 @@ app.get("/sushi/edit/:number", (req, res) => {
 
 // Update
 app.post("/sushi/update/:number", (req, res) => {
-  // 本来は変更する番号が存在するか，各項目が正しいか厳重にチェックする
-  // 本来ならここにDBとのやり取りが入る
   sushi[req.params.number].code = req.body.code;
   sushi[req.params.number].name = req.body.name;
   sushi[req.params.number].category = req.body.category;
@@ -236,7 +228,7 @@ app.post("/sushi/update/:number", (req, res) => {
   sushi[req.params.number].kcal = req.body.kcal;
 
   console.log( sushi );
-  res.redirect('/sushi' );
+  res.render('sushi_message', { message: "寿司情報を変更しました。", link: "/sushi/" + req.params.number , linktext: "変更した寿司の詳細ページへ戻る" });
 });
 
 
@@ -265,7 +257,6 @@ let game = [
 
 // 一覧
 app.get("/game", (req, res) => {
-  // 本来ならここにDBとのやり取りが入る
   res.render('game', {data: game} );
 });
 
@@ -276,7 +267,6 @@ app.get("/game/create", (req, res) => {
 
 // 詳細
 app.get("/game/:number", (req, res) => {
-  // 本来ならここにDBとのやり取りが入る
   const number = req.params.number;
   const detail = game[ number ];
   res.render('game_detail', {id: number, data: detail} );
@@ -301,14 +291,13 @@ app.post("/game/delete/:number", (req, res) => {
   if (!game[number]) {
     return res.status(404).send("データが存在しません");
   }
-  
+
   game.splice(number, 1);
-  res.redirect("/game");
+  res.render('game_message', { message: "ゲーム情報の削除を完了しました。",link: "/game" , linktext: "ゲーム一覧に戻る" });
 });
 
 // Create
 app.post("/game", (req, res) => {
-  // 本来ならここにDBとのやり取りが入る
   const id = game.length ;
   const code = req.body.code;
   const name = req.body.name;
@@ -318,12 +307,11 @@ app.post("/game", (req, res) => {
   game.push( { id: id, code: code, name: name, category: category, author: author, url: url } );
   console.log( game );
 
-  res.render('game', {data: game} );
+  res.render('game_message', { message: "新しいゲームを追加しました。", link: "/game", linktext: "ゲーム一覧に戻る" });
 });
 
 // 編集ページ
 app.get("/game/edit/:number", (req, res) => {
-  // 本来ならここにDBとのやり取りが入る
   const number = req.params.number;
   const detail = game[ number ];
   res.render('game_edit', {id: number, data: detail} );
@@ -331,8 +319,6 @@ app.get("/game/edit/:number", (req, res) => {
 
 // Update
 app.post("/game/update/:number", (req, res) => {
-  // 本来は変更する番号が存在するか，各項目が正しいか厳重にチェックする
-  // 本来ならここにDBとのやり取りが入る
   game[req.params.number].code = req.body.code;
   game[req.params.number].name = req.body.name;
   game[req.params.number].category = req.body.category;
@@ -340,9 +326,8 @@ app.post("/game/update/:number", (req, res) => {
   game[req.params.number].url = req.body.url;
 
   console.log( game );
-  res.redirect('/game' );
+  res.render('game_message', { message: "ゲーム情報を変更しました。", link: "/game/" + req.params.number , linktext: "変更したゲームの詳細ページへ戻る" });
 });
-
 
 app.listen(8080, () => {
   console.log("Server is running on port 8080");
