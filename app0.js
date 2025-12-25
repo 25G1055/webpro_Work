@@ -55,10 +55,6 @@ app.get("/air_rider/delete/:number", (req, res) => {
   const number = req.params.number ;
   const detail = rider[ number ];
 
-  if (!detail) {
-    return res.status(404).send("データが存在しません");
-  }
-
   res.render('air_rider_delete', {id: number, data: detail} );
 });
 
@@ -66,10 +62,6 @@ app.get("/air_rider/delete/:number", (req, res) => {
 // 削除実行
 app.post("/air_rider/delete/:number", (req, res) => {
   const number = req.params.number ;
-
-  if (!rider[number]) {
-    return res.status(404).send("データが存在しません");
-  }
 
   rider.splice(number, 1);
   res.render('air_rider_message', { message: "マシンを削除しました", link: "/air_rider" , linktext: "マシン一覧に戻る" });
@@ -175,20 +167,12 @@ app.get("/sushi/delete/:number", (req, res) => {
   const number = req.params.number;
   const detail = sushi[ number ];
 
-  if (!detail) {
-    return res.status(404).send("データが存在しません");
-  }
-
   res.render('sushi_delete', {id: number, data: detail} );
 });
 
 // 削除実行
 app.post("/sushi/delete/:number", (req, res) => {
   const number = req.params.number;
-
-  if (!sushi[number]) {
-    return res.status(404).send("データが存在しません");
-  }
 
   sushi.splice(number, 1);
  res.render('sushi_message', { message: "寿司情報を削除しました。", link: "/sushi", linktext: "寿司一覧に戻る" });
@@ -277,20 +261,12 @@ app.get("/game/delete/:number", (req, res) => {
   const number = req.params.number;
   const detail = game[ number ];
 
-  if (!detail) {
-    return res.status(404).send("データが存在しません");
-  }
-
   res.render('game_delete', {id: number, data: detail} );
 });
 
 // 削除実行
 app.post("/game/delete/:number", (req, res) => {
   const number = req.params.number;
-
-  if (!game[number]) {
-    return res.status(404).send("データが存在しません");
-  }
 
   game.splice(number, 1);
   res.render('game_message', { message: "ゲーム情報の削除を完了しました。",link: "/game" , linktext: "ゲーム一覧に戻る" });
